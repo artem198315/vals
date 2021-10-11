@@ -131,7 +131,12 @@ func parseKey(key string) (spec secretSpec, err error) {
 		return
 	}
 
-	spec.vaultBaseURL = makeEndpoint(components[0])
+	if azureVaultName := os.Getenv("AZURE_VAULT_NAME"); azureVaultName == "" {
+		spec.vaultBaseURL = makeEndpoint(components[0])
+	} else {
+		spec.vaultBaseURL = makeEndpoint(azureVaultName)
+	}
+
 	spec.secretName = components[1]
 	if len(components) > 2 {
 		spec.secretVersion = components[2]

@@ -422,6 +422,9 @@ Retrieve secrets from Azure Key Vault. Path is used to specify the vault and sec
 - `ref+azurekeyvault://VAULT-NAME/SECRET-NAME[/VERSION]`
 
 VAULT-NAME is either a simple name if operating in AzureCloud (vault.azure.net) or the full endpoint dns name when operating against non-default azure clouds (US Gov Cloud, China Cloud, German Cloud).
+
+VAULT-NAME can be globally overrided by environment variable AZURE_VAULT_NAME
+
 Examples:
 - `ref+azurekeyvault://my-vault/secret-a`
 - `ref+azurekeyvault://my-vault/secret-a/ba4f196b15f644cd9e949896a21bab0d`
